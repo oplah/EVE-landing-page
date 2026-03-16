@@ -6,13 +6,6 @@ export default function FinalCTA() {
       style={{ background: "linear-gradient(135deg, #202548 0%, #454468 100%)" }}
       aria-label="Get started with EVE"
     >
-      {/* Ambient glow */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-violet-800/30 blur-[140px]" />
-        <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-purple-800/20 blur-[100px]" />
-        <div className="absolute bottom-1/4 left-1/4 w-[250px] h-[250px] rounded-full bg-indigo-900/20 blur-[80px]" />
-      </div>
-
       {/* Subtle grid pattern */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -28,16 +21,7 @@ export default function FinalCTA() {
         {/* Headline */}
         <h2 className="title-bold-1 text-white mb-6">
           Begin your{" "}
-          <span
-            style={{
-              background: "linear-gradient(135deg, #c084fc 0%, #a855f7 35%, #ec4899 70%, #f97316 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            transformation
-          </span>
+          <span className="text-white">transformation</span>
           {" "}today
         </h2>
 

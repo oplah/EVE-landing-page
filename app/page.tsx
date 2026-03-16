@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -18,6 +19,18 @@ export default function Home() {
       <ChatFeature />
       <GoalFeature />
       <LearningFeature />
+      {/* Bridge image — equally between Learn deeper and Every detail sections */}
+      <div className="bg-white py-10 md:py-14 px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <Image
+            src="/img-everydetail.png"
+            alt="Every detail, designed for you"
+            width={1000}
+            height={560}
+            className="rounded-3xl w-full object-cover"
+          />
+        </div>
+      </div>
       <SmallFeatures />
       <FAQ />
       <FinalCTA />

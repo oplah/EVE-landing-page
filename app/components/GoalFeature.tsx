@@ -134,7 +134,7 @@ export default function GoalFeature() {
           {/* Right: Interactive goal selector */}
           <div>
             {/* EVE prompt */}
-            <div className="flex items-start gap-3 mb-5 p-4 bg-[#F0F0F8] rounded-2xl">
+            <div className="flex items-start gap-3 mb-5 p-4 rounded-2xl" style={{ background: "linear-gradient(135deg, #EEF5FF, #F1F1FC)" }}>
               <Image src="/EVE-icon.svg" alt="EVE" width={24} height={24} className="flex-shrink-0 mt-0.5" />
               <p className="body-small font-semibold text-[#1A1A1A] leading-relaxed">
                 What area of life would you most like to transform? Select one below — I&apos;ll build your personalised learning path.

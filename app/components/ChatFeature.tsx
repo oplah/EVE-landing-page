@@ -61,11 +61,12 @@ export default function ChatFeature() {
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [usedReplies, setUsedReplies] = useState<Set<string>>(new Set());
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = messagesContainerRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
   }, [messages, isTyping]);
 
   const sendMessage = (content: string, key?: string) => {
@@ -142,7 +143,7 @@ export default function ChatFeature() {
               </div>
 
               {/* Messages */}
-              <div className="h-72 overflow-y-auto px-5 py-5 space-y-4 scroll-smooth" role="log" aria-live="polite" aria-label="Chat messages">
+              <div ref={messagesContainerRef} className="h-72 overflow-y-auto px-5 py-5 space-y-4 scroll-smooth" role="log" aria-live="polite" aria-label="Chat messages">
                 {messages.map((msg) => (
                   <div
                     key={msg.id}
@@ -153,8 +154,9 @@ export default function ChatFeature() {
                       className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
                         msg.role === "eve"
                           ? "bg-[#1A0F3A] border border-violet-900/50 text-white/85 rounded-bl-sm"
-                          : "bg-gradient-to-br from-violet-600 to-purple-700 text-white rounded-br-sm"
+                          : "text-white rounded-br-sm"
                       }`}
+                      style={msg.role === "user" ? { background: "linear-gradient(135deg, #5693F6, #8A87EF)" } : {}}
                     >
                       {msg.content}
                     </div>
@@ -162,7 +164,6 @@ export default function ChatFeature() {
                 ))}
 
                 {isTyping && <TypingIndicator />}
-                <div ref={messagesEndRef} />
               </div>
 
               {/* Quick replies */}

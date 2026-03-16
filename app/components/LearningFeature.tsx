@@ -1,34 +1,39 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 type Tab = "quiz" | "summary" | "apply";
 
 const QUIZ = {
-  question: "According to habit science, what is the average number of days it takes to form a new habit?",
+  question: "According to Regan Hilyer, what is the most powerful factor in successful manifestation?",
   options: [
-    { id: "a", text: "21 days", correct: false },
-    { id: "b", text: "66 days on average", correct: true },
-    { id: "c", text: "Exactly 30 days", correct: false },
-    { id: "d", text: "It's different for everyone — there's no fixed number", correct: false },
+    { id: "a", text: "Repeating affirmations daily for 30 days", correct: false },
+    { id: "b", text: "Aligning your emotional state with what you desire", correct: true },
+    { id: "c", text: "Visualising your goals for exactly 10 minutes each morning", correct: false },
+    { id: "d", text: "Thinking positive thoughts at all times", correct: false },
   ],
   explanation:
-    "Research by Dr. Phillippa Lally at University College London found habits take anywhere from 18 to 254 days to form, with 66 days being the average. The popular '21-day myth' was misinterpreted from early plastic surgery observations.",
+    "Regan Hilyer teaches that manifestation is fundamentally an inside job. Your emotional frequency — not just your thoughts — is the signal you broadcast to the universe. When you genuinely feel the reality of what you want before it arrives, you collapse the gap between desire and outcome.",
 };
 
 const SUMMARY_POINTS = [
-  "Small 1% improvements compound into extraordinary results — the math of marginal gains.",
-  "Your identity shapes your habits more than your goals do. \"I am a reader\" vs. \"I want to read more.\"",
-  "Environment design beats willpower every time. Make good habits obvious and easy.",
-  "The 2-minute rule: shrink any habit to its smallest possible version to start.",
+  "Your outer world is a reflection of your inner state. Lasting change starts within.",
+  "Clarity is power — vague intentions create vague results. Get radically specific about what you want.",
+  "Your dominant emotional frequency determines what you attract. Raise it deliberately, not by accident.",
+  "Embody the version of you who already has what you desire. Be it now, don't wait for proof.",
 ];
 
 const APPLY_ITEMS = [
-  { time: "Morning", action: "Choose one micro-habit and commit to 2 minutes only", icon: "🌅" },
-  { time: "Afternoon", action: "Redesign your environment to make your habit unavoidable", icon: "🏡" },
-  { time: "Evening", action: "Track your streak and note one thing you noticed about yourself", icon: "📓" },
-  { time: "Weekly", action: "Review with EVE — she'll adjust your path based on what's working", icon: "✦" },
+  { time: "Morning", action: "Write 3 desires in present tense as if already real — feel them as you write", icon: "🌅" },
+  { time: "Afternoon", action: "Check your emotional frequency — are you vibrating at the level of your desire?", icon: "✨" },
+  { time: "Evening", action: "Spend 5 minutes visualising your desired reality with full sensory detail and genuine emotion", icon: "🌙" },
+  { time: "Weekly", action: "Review with EVE — she'll track your manifestation momentum and refine your focus", icon: "✦" },
 ];
+
+function PanelIcon() {
+  return <Image src="/EVE-icon.svg" alt="EVE" width={18} height={18} className="flex-shrink-0" />;
+}
 
 export default function LearningFeature() {
   const [activeTab, setActiveTab] = useState<Tab>("quiz");
@@ -82,7 +87,7 @@ export default function LearningFeature() {
                       ? "text-white shadow-md"
                       : "text-gray-500 hover:text-[#1A1A1A]"
                   }`}
-                  style={activeTab === id ? { background: "linear-gradient(135deg, #9B37F2 0%, #7A12D4 100%)", boxShadow: "0 4px 12px rgba(122,18,212,0.3)" } : {}}
+                  style={activeTab === id ? { background: "linear-gradient(135deg, #5693F6 0%, #8A87EF 100%)", boxShadow: "0 4px 12px rgba(86,147,246,0.3)" } : {}}
                   aria-selected={activeTab === id}
                   role="tab"
                 >
@@ -99,16 +104,12 @@ export default function LearningFeature() {
                 <div className="p-6" role="tabpanel" aria-label="Quiz mode">
                   {/* Context label */}
                   <div className="flex items-center gap-2 mb-4">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-violet-400 to-purple-600 flex items-center justify-center flex-shrink-0">
-                      <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
-                        <path d="M5 0.5L6.12 3.88H9.51L6.7 5.99L7.82 9.37L5 7.26L2.18 9.37L3.3 5.99L0.49 3.88H3.88L5 0.5Z" fill="white" />
-                      </svg>
-                    </div>
-                    <span className="text-xs font-semibold text-violet-600 uppercase tracking-wider">Testing your understanding</span>
+                    <PanelIcon />
+                    <span className="text-xs font-semibold text-[#1A1A1A] uppercase tracking-wider">Testing your understanding</span>
                   </div>
 
-                  <div className="bg-violet-50 rounded-2xl p-4 mb-5 border border-violet-100">
-                    <p className="text-[11px] text-violet-500 font-semibold uppercase tracking-wider mb-1">From: Atomic Habits · James Clear</p>
+                  <div className="rounded-2xl p-4 mb-5 border border-blue-100/60" style={{ background: "linear-gradient(135deg, #EEF5FF, #F1F1FC)" }}>
+                    <p className="text-[11px] text-[#71767F] font-semibold uppercase tracking-wider mb-1">From: The Art of Manifesting · Regan Hilyer</p>
                     <p className="text-base font-semibold text-[#1A1A1A] leading-snug">{QUIZ.question}</p>
                   </div>
 
@@ -148,11 +149,11 @@ export default function LearningFeature() {
 
                   {showExplanation && (
                     <div className="bg-violet-50 rounded-xl p-4 border border-violet-200 animate-slide-up-fade">
-                      <p className="text-xs font-bold text-violet-600 mb-1.5">EVE explains:</p>
+                      <p className="text-xs font-bold text-[#1A1A1A] mb-1.5">EVE explains:</p>
                       <p className="text-sm text-[#1A1A1A] leading-relaxed">{QUIZ.explanation}</p>
                       <button
                         onClick={resetQuiz}
-                        className="mt-3 text-xs font-semibold text-violet-600 hover:text-violet-700 underline underline-offset-2"
+                        className="mt-3 text-xs font-semibold text-[#1A1A1A] hover:text-gray-600 underline underline-offset-2"
                       >
                         Try again →
                       </button>
@@ -165,24 +166,23 @@ export default function LearningFeature() {
               {activeTab === "summary" && (
                 <div className="p-6" role="tabpanel" aria-label="Quick summary mode">
                   <div className="flex items-center gap-2 mb-4">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-violet-400 to-purple-600 flex items-center justify-center flex-shrink-0">
-                      <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
-                        <path d="M5 0.5L6.12 3.88H9.51L6.7 5.99L7.82 9.37L5 7.26L2.18 9.37L3.3 5.99L0.49 3.88H3.88L5 0.5Z" fill="white" />
-                      </svg>
-                    </div>
-                    <span className="text-xs font-semibold text-violet-600 uppercase tracking-wider">EVE's key insights</span>
+                    <PanelIcon />
+                    <span className="text-xs font-semibold text-[#1A1A1A] uppercase tracking-wider">EVE&apos;s key insights</span>
                   </div>
 
-                  <div className="bg-violet-50 rounded-2xl p-4 mb-5 border border-violet-100">
-                    <p className="text-[11px] text-violet-500 font-semibold uppercase tracking-wider mb-0.5">Lesson</p>
-                    <p className="text-sm font-bold text-[#1A1A1A]">The Power of Atomic Habits</p>
-                    <p className="text-xs text-gray-500">James Clear · Mindvalley Quest</p>
+                  <div className="rounded-2xl p-4 mb-5 border border-blue-100/60" style={{ background: "linear-gradient(135deg, #EEF5FF, #F1F1FC)" }}>
+                    <p className="text-[11px] text-[#71767F] font-semibold uppercase tracking-wider mb-0.5">Lesson</p>
+                    <p className="text-sm font-bold text-[#1A1A1A]">The Art of Manifesting</p>
+                    <p className="text-xs text-gray-500">Regan Hilyer · Mindvalley Quest</p>
                   </div>
 
                   <div className="space-y-3 mb-5">
                     {SUMMARY_POINTS.map((point, i) => (
                       <div key={i} className="flex gap-3">
-                        <div className="w-5 h-5 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-white text-[9px] font-bold flex-shrink-0 mt-0.5">
+                        <div
+                          className="w-5 h-5 rounded-full flex items-center justify-center text-white text-[9px] font-bold flex-shrink-0 mt-0.5"
+                          style={{ background: "linear-gradient(135deg, #5693F6, #8A87EF)" }}
+                        >
                           {i + 1}
                         </div>
                         <p className="text-sm text-[#1A1A1A] leading-relaxed">{point}</p>
@@ -191,10 +191,9 @@ export default function LearningFeature() {
                   </div>
 
                   <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
-                    <p className="text-xs font-bold text-amber-700 mb-1">💡 EVE's Insight</p>
+                    <p className="text-xs font-bold text-amber-700 mb-1">💡 EVE&apos;s Insight</p>
                     <p className="text-sm text-amber-900 leading-relaxed">
-                      Based on your current patterns, your identity shift from &ldquo;someone trying to change&rdquo;
-                      to &ldquo;someone who naturally does this&rdquo; is the breakthrough that will unlock everything else.
+                      Based on your current patterns, your biggest breakthrough isn&apos;t doing more — it&apos;s becoming the version of you who already has this. The shift from wanting to being is where manifestation accelerates.
                     </p>
                   </div>
                 </div>
@@ -204,12 +203,8 @@ export default function LearningFeature() {
               {activeTab === "apply" && (
                 <div className="p-6" role="tabpanel" aria-label="Real-world application mode">
                   <div className="flex items-center gap-2 mb-4">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-violet-400 to-purple-600 flex items-center justify-center flex-shrink-0">
-                      <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
-                        <path d="M5 0.5L6.12 3.88H9.51L6.7 5.99L7.82 9.37L5 7.26L2.18 9.37L3.3 5.99L0.49 3.88H3.88L5 0.5Z" fill="white" />
-                      </svg>
-                    </div>
-                    <span className="text-xs font-semibold text-violet-600 uppercase tracking-wider">Your daily action plan</span>
+                    <PanelIcon />
+                    <span className="text-xs font-semibold text-[#1A1A1A] uppercase tracking-wider">Your daily action plan</span>
                   </div>
 
                   <p className="text-sm text-gray-500 mb-5 leading-relaxed">
@@ -221,7 +216,7 @@ export default function LearningFeature() {
                       <div key={time} className="flex gap-4 p-3.5 rounded-xl bg-gray-50 border border-gray-100">
                         <span className="text-xl flex-shrink-0">{icon}</span>
                         <div>
-                          <p className="text-xs font-bold text-violet-600 uppercase tracking-wider mb-0.5">{time}</p>
+                          <p className="text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-0.5">{time}</p>
                           <p className="text-sm text-[#1A1A1A] leading-relaxed">{action}</p>
                         </div>
                       </div>
